@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Will you accept me back?</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f9c6e0, #f6e6b4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    h1 {
+      color: #e75480;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 3px white;
+    }
+    .buttons {
+      display: flex;
+      gap: 2rem;
+    }
+    button {
+      background: #ffb6b9;
+      color: #fff;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0px 6px 12px rgba(66,0,60,0.10);
+    }
+    button#noBtn {
+      position: relative;
+    }
+    .confetti {
+      font-size: 3rem;
+      margin-top: 2rem;
+      animation: pop 1s ease;
+    }
+    @keyframes pop {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you accept me back? 💖</h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes!</button>
+    <button id="noBtn">No</button>
+  </div>
+  <div id="result"></div>
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const resultDiv = document.getElementById('result');
+    let attempts = 0;
+
+    noBtn.addEventListener('mouseover', function() {
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+      attempts++;
+    });
+
+    yesBtn.addEventListener('click', function() {
+      resultDiv.innerHTML = '<div class="confetti">🎉💖 Yay! Love you! 💖🎉</div>';
+      document.querySelector('.buttons').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
